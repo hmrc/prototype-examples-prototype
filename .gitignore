@@ -1,22 +1,22 @@
-logs
-project/project
-project/target
-target
-lib_managed
-tmp
-.history
-dist
-/.idea
-/*.iml
-/*.ipr
-/out
-/.idea_modules
-/.classpath
-/.project
-/RUNNING_PID
-/.settings
-*.iws
+# ignore tracking usage data config - we want a different one for each user
+usage-data-config.json
+# ignore extension SCSS because it's dynamically generated
+lib/extensions/_extensions.scss
+# ignore any release archives
+/govuk-prototype-kit*.zip
+.env
+.sass-cache
+.DS_Store
+.start.pid
+.port.tmp
+public
 node_modules/
-npm-debug.log
-yarn-debug.log
-yarn-error.log
+.tmuxp.*
+.idea
+/cypress-test
+/cypress/videos
+/cypress/screenshots
+/cypress/downloads
+/cypress/support
+/cypress/temp
+tmp/
