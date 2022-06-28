@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+        text: "Back",
+        href: "javascript:history.back()"
+    }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="" method="post" novalidate>
+                {{ govukRadios({
+                    idPrefix: "where-do-you-live",
+                    name: "where-do-you-live",
+                    fieldset: {
+                        legend: {
+                            text: "Where do you live?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--l"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "england",
+                            text: "England",
+                            attributes: {
+                                onchange: "this.form.action = '/england'"
+                            }
+                        },
+                        {
+                            value: "scotland",
+                            text: "Scotland",
+                            attributes: {
+                                onchange: "this.form.action = this.value"
+                            }
+                        },
+                        {
+                            value: "wales",
+                            text: "Wales",
+                            attributes: {
+                                onchange: "this.form.action = `/${this.value}`"
+                            }
+                        },
+                        {
+                            value: "northern-ireland",
+                            text: "Northern Ireland",
+                            attributes: {
+                                onchange: "
+                                    if (window.scenario == 'unexpected-error') {
+                                        this.form.action = 'unexpected-error'
+                                    } else {
+                                        this.form.action = ''
+                                    }
+                                "
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

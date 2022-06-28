@@ -313,6 +313,11 @@ app.post(/^\/([^.]+)$/, function (req, res) {
   )
 })
 
+// Rather than a 404 page, show what data is in the session
+app.use(function (req, res, _next) {
+  res.render('show_data.html', { getLocalVars: function () { return this.ctx._locals } })
+})
+
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error(`Page not found: ${req.path}`)

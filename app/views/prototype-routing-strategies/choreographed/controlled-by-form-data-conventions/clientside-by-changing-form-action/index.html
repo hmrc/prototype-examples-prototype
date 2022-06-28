@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block beforeContent %}
+    {{ govukBackLink({
+        text: "Back",
+        href: "javascript:history.back()"
+    }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="" method="post" novalidate>
+                {{ govukRadios({
+                    idPrefix: "where-do-you-live",
+                    name: "where-do-you-live",
+                    fieldset: {
+                        legend: {
+                            text: "Where do you live?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--l"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "england",
+                            text: "England"
+                        },
+                        {
+                            value: "../../scotland",
+                            text: "Scotland"
+                        },
+                        {
+                            value: "./lives-in/wales",
+                            text: "Wales"
+                        },
+                        {
+                            value: "northern-ireland",
+                            text: "Northern Ireland",
+                            attributes: {
+                                onchange: "this.form.action = '/northern-ireland'"
+                            }
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    text: "Continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll("input[type='radio']").forEach(function(radioButton) {
+            radioButton.hasAttribute("onchange") || radioButton.addEventListener("change", function(){
+                this.form.action = this.value;
+            })
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,1 @@
+http://localhost:3000/prototype-routing-strategies/choreographed/clientside-by-changing-form-action
